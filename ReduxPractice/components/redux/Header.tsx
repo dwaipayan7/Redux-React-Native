@@ -4,7 +4,7 @@ import React from 'react'
 const Header = () => {
   return (
     <View style = {styles.container}>
-      <Text style = {{fontSize: 30}}>0</Text>
+      <Text style = {{fontSize: 30, color: 'white'}}>0</Text>
     </View>
   )
 }
@@ -16,5 +16,6 @@ const styles = StyleSheet.create({
     // flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: 'blue'
   },
 })

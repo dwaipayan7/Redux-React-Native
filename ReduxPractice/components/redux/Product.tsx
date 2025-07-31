@@ -1,14 +1,18 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  
-  Button,
-  Image,
-} from 'react-native';
+import { StyleSheet, Text, View, Button, Image, Alert } from 'react-native';
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { addToCart } from './action';
 
-const Product = ({item}) => {
+const Product = ({ item }) => {
+  const dispatch = useDispatch();
+
+  const handleAddToCart = (item) => {
+    console.log('====================================');
+    Alert.alert('Pressed', JSON.stringify(item));
+    console.log('====================================');
+    dispatch(addToCart(item));
+  };
+
   return (
     <View>
       <Text style={{ fontSize: 20, marginBottom: 10 }}>{item.name}</Text>
@@ -16,7 +20,10 @@ const Product = ({item}) => {
       <Text style={{ fontSize: 20, marginBottom: 10 }}>{item.color}</Text>
       <Image style={styles.imgage} source={{ uri: item.image }}></Image>
 
-      <Button title="Add To Cart"></Button>
+      <Button
+        title="Add To Cart"
+        onPress={() => handleAddToCart(item)}
+      ></Button>
     </View>
   );
 };
@@ -29,9 +36,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-    imgage: {
+  imgage: {
     height: 100,
     width: 100,
-    marginBottom: 10
-  }
+    marginBottom: 10,
+  },
 });
